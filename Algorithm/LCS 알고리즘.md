@@ -77,7 +77,11 @@
 	
 	- 문자열 "ACAYKP"와 "CAPCAK"의 LCS : "ACAK"
 	
-	
+
+
+## LCS 소스 코드
+
+
 ```C
 
 #include <iostream>
