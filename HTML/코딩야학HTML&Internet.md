@@ -25,4 +25,13 @@
 
 
 
+## HTML 태그 예제
+
+```html
+<p>hello this is <strong>cgin</strong>! <u>nice to meet you~</u></p>
+
+```
+
+- <strong> 태그 : 강하게
+- <u> 태그 : 밑줄
 
