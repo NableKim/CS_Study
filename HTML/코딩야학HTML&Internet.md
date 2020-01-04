@@ -68,3 +68,74 @@
 - 속성의 위치는 상관 X
 
 
+
+## 부모 자식 태그, 목차
+
+- 목차
+  ```html
+  
+  <li>html</li>
+  <li>css</li>
+  <li>javascript</li>
+
+  ```
+
+   ```html
+  <ul>
+    <li>html</li>
+    <li>css</li>
+    <li>javascript</li>
+  </ul>
+  ```
+  
+  - <li>태그는 부모 태그로 <ul> 태그를 가지고 있다.
+  - <ol> : Ordered List
+  - <ul> : Unordered List
+  
+  
+  ```html
+  
+  <table>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+  </table>
+  
+  ```
+  
+  
+  - <table>은 3대가 같이 다닌다. 
+  - <table> 할아버지, <tr> 아버지, <td> 아들
+
+
+
+
+## 문서의 구조
+
+- 컴퓨터는 0과 1만 인식을 한다.
+  ```html
+  <h1>안녕!</h1>
+  ```
+  
+  - 해당 html를 실행하면 한글을 인식을 못한다.
+
+  ```html
+  <meta charset="utf-8">
+  ```
+
+  - 인식을 못한 이유는 우리가 작성을 utf-8 문서형식으로 작성을 하였는 데 컴퓨터는 지금 utf-8형식을 읽지 않았기 때문이다.
+
+
+
+## a태그
+
+- HyperText
+- <a></a> : 링크
+- 해당 링크가 없다면 우리는 포털사이트에서 검색을 사용할 수 없다.
+
+
+
+
+
+
