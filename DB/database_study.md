@@ -1332,6 +1332,145 @@
 - **서로 관계있는 데이터가 여러 테이블로 나뉘어 저장되므로, 각 테이블에 저장된 데이터를 효과적으로 검색하기 위해 조인이 필요**하다.
 
 
+![join-table](./images/join-table.png)
+
+
+### 조인의 종류
+
+- 내부 조인 (INNER JOIN)
+  - 2개의 테이블(A,B)의 컬럼 값을 결합함으로써 새로운 결과 테이블을 생성
+  - 명시적 조인 표현
+  ```sql
+  
+  SELECT * FROM employeeINNER JOIN deparment 
+  ON employee.DepartmentID = department.DepartmentID;
+  
+  ```
+  
+  -암시적 조인 표현
+  ```sql
+  
+  SELECT * FROM employee, department
+  WHERE employee.DepartmentID = department.DepartmentID;
+  
+  ```
+  
+  - 결과
+  ![inner-join](./images/inner-join.png)
+  
+  
+    - 동등 조인 (EQUAL JOIN)
+      - 비교자 기반의 조인이며, 조인 구문에서 동등비교만을 사용
+      
+    - 자연 조인 (NATURAL JOIN)
+      - 동등 조인의 한 유형으로 조인된 테이블에서 동일한 컬럼명을 가진 2개의 테이블에서 모든 컬럼들을 비교함으로써 암시적으로 일어나는 구문
+      - 결과적으로 나온 조인된 테이블은 동일한 이름을 가진 컬럼의 각 쌍에 대한 단 하나의 컬럼만 포함 (DepartmentID가 겹치는 데 하나의 컬럼으로 표시하였다는 것을 알 수 있음)
+      
+      ![natural-join](./images/natural-join.png)
+      
+      
+    - 교차 조인 (CROSS JOIN)
+      - 조인되는 두 테이블에서 곱집합을 반환
+      - 즉, 두 번째 ㅔ이블로부터 각 행과 첫 번째 테이블에서 각 행이 한 번씩 결합된 열을 만드는 것
+      - 명시적 조인 표현
+      ```sql
+      
+      SELECT * FROM employee
+      CROSS JOIN department
+      
+      ```
+      
+      - 암시적 조인 표현
+      
+      ```sql
+      
+      SELECT * FROM employee, departemtn
+      
+      ```
+      
+      - 결과
+      ![cross-join](./images/cross-join.png)
+      
+      
+  
+- 외부 조인 (OUTER JOIN)
+  - 조인 대상 테이블에서 특정 테이블의 데이터가 모두 필요한 상황에서 외부 조인을 활용하여 효과적으로 결과 집합을 생성할 수 있다.
+  
+  - 왼쪽 외부 조인 (LEFT OUTER JOIN)
+    - 좌측 테이블의 모든 데이터를 포함하는 결과 집합을 생성
+    
+    ```sql
+    
+    SELECT * FROM employee LEFT OUTER JOIN department
+    ON employee.DepartmentID = department.DepartmentID;
+    
+    ```
+    
+    - 결과
+    ![left-outer-join](./images/left-outer-join.png)
+    
+    
+  - 오른쪽 외부 조인 (RIGHT OUTER JOIN)
+    - 우측 테이블의 모든 데이터를 포함하는 결과 집합을 생성
+    
+    ```sql
+    
+    SELECT * FROM employee RIGHT OUTER JOIN department
+    ON employee.DepartmentID=department.DepartmentID;
+    
+    ```
+  
+    - 결과
+    
+    ![right-outer-join](./images/right-outer-join.png)
+    
+    
+  - 완전 외부 조인 (FULL OUTER JOIN)
+    - 양쪽 테이블 모두 OUTER JOIN이 필요할 때 사용
+    
+    ```sql
+    
+    SELECT * FROM employee FULL OUTER JOIN department
+    ON employee.DepartmentID = department.DepartmentID;
+    
+    ```
+
+    - 결과
+    ![full-outer-join](./images/full-outer-join.png)
+    
+- 셀프 조인 (SELF JOIN)
+  - 한 테이블에서 자기 자신에 조인시키는 것
+  
+  
+### 조인을 사용할 때 주의사항
+
+- SQL 문장의 의미를 제대로 파악
+  - SQL을 어떻게 작성하느냐에 따라 성능이 크게 좌우된다.
+  
+- 명확한 조인 조건 제공
+  - 조인 조건을 명확하게 제공하지 않을 경우, 의도치 않게 CROSS JOIN이 수행될 수 있다.
+  
+  
+### 조인을 사용할 때 고려사항
+
+- 조인할 대상의 집합을 최소화
+  - 집합을 최소화할 방법이 있으면, 조건을 먼저 적용하여 관계를 맺을 집합을 최소화한 후, 조인을 맺는 것이 효율적이다.
+  
+  
+- 효과적인 인덱스의 활용
+  - 인덱스를 활용하면 조인 연산의 비용을 극적으로 낮출 수 있다.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
