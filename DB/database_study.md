@@ -1239,7 +1239,7 @@
 - B-tree = 균형 잡힌 트리 라고도 한다. (leaf block의 깊이가 모두 동일하여서)
 - 또한, 각 노드에 값도 가지고 있다. (B+tree는 값은 없고 탐색을 위한 인덱스 정보만 있다)
 
-- [!B_tree](./images/B_tree.PNG)
+  [!B-tree](./images/B_tree.PNG)
   > 위의 그림은 B+트리임! B-tree는 leaf node가 이중연결리스트로 연결되어 있지 않음. 
 
 - B-tree 구성 방법 (찾고 있음)
