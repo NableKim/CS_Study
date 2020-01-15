@@ -154,8 +154,6 @@ for (int i = 0; i < n; i++) {
 }
 
 
-출처: https://jason9319.tistory.com/113 [ACM-ICPC 상 탈 사람]
-
 ```
 
 ## 관련 문제
