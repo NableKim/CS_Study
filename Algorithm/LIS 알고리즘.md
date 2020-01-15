@@ -36,34 +36,40 @@
 ```C
 
 #include <iostream>
+#include <vector>
 #include <algorithm>
+
 using namespace std;
 
-int arr[1001], dp[1001], ans, N;
-//dp[i] = i번째 원소를 마지막으로 하는 LIS의 길이
+vector<int> v(1001);
+vector<int> dp(1001);
+
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin >> N;
-	for (int i = 1; i <= N; ++i) {
-		cin >> arr[i];
-		int here = 0;
-		for (int j = 1; j < i; ++j) {
-			if (arr[i] > arr[j])
-				here = max(here, dp[j]);
+
+	int n;
+	cin >> n;
+
+	for (int i = 1; i <= n; i++)
+		cin >> v[i];
+
+	dp[1] = 1;
+	for (int i = 1; i <= n; i++) {
+		int max_value = 0;
+		for (int j = 1; j < i; j++) {
+			if (v[j] < v[i]) {
+				max_value = max(max_value, dp[j]);
+			}
 		}
-		dp[i] = here + 1;
-		ans = max(ans, dp[i]);
+		dp[i] = max_value+1;
 	}
 
-	for (int i = 1; i <= N; i++)
-		cout << dp[i] << " ";
-	cout << "\n";
-
-
-	cout << ans;
+	int max_result = 0;
+	for (int i = 1; i <= n; i++)
+		if (dp[i] > max_result)
+			max_result = dp[i];
+	cout << max_result << "\n";
 	return 0;
 }
-
 
 ```
 
