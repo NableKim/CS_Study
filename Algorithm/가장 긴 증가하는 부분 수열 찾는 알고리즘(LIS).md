@@ -136,7 +136,7 @@ int main() {
 - 실제로 원하는 정확한 배열값과 다른 결과값이 나올 수 있다는 것이다!
 - **LIS의 정확한 값은 확인할 수 없다**
 
-## LIS 구현
+## LIS 구현 ( 개수만 아는 알고리즘)
 
 ```c
 
@@ -153,6 +153,99 @@ for (int i = 0; i < n; i++) {
     }
 }
 
+
+```
+
+
+## LIS 배열을 어떻게 구할까? 
+
+- ans라는 pair 배열을 새로 만들고 다음과 같이 정의
+   > ans[].first : 실제 LIS배열에 들어갈 수 있는 위치
+   > ans[].second : 실제 해당하는 값
+
+- ex) 1 6 2 5 7 3 5 6 
+- ans::first 0 1 1 2 3 2 3 4
+- ans::secon 1 6 2 5 7 3 5 6
+
+- 이 값을 first를 기준으로 뒤에서부터 조사해보면 
+- first 4일 때 (6) -> first 3일 때 (5) -> first가 2일 때 (3) -> first가 1일 때 (2) -> first가 0일 때 (1)
+- 이것을 스택에 담아 역출력하면 1,2,3,5,6 이라는 실제 LIS배열을 구할 수 있다.
+
+
+## LIS 구현 (수 및 배열)
+
+```c
+
+#include <iostream>
+#include <vector>
+#include <stack>
+
+using namespace std;
+
+int input[1000001];
+int lis[1000001];
+vector<pair<int, int>> vt(1000001);
+
+int lowerBoundary(int left, int right, int key) {
+	while (left < right) {
+		int middle = (left + right) / 2;
+		if (lis[middle] < key)
+			left = middle + 1;
+		else
+			right = middle;
+	}
+	return right + 1;
+}
+int main() {
+	cin.tie(0);
+	ios::sync_with_stdio(false);
+
+	int n;
+	cin >> n;
+
+	for (int i = 0; i < n; i++)
+		cin >> input[i];
+
+	int plis = 0;
+	int pinput = 1;
+	lis[plis] = input[0];
+	vt[0].first = 0;
+	vt[0].second = input[0];
+
+	while (pinput < n) {
+		if (lis[plis] < input[pinput]) {
+			lis[++plis] = input[pinput];
+			vt[pinput].first = plis;
+			vt[pinput].second = input[pinput];
+		}
+		else {
+			int pos = lowerBoundary(0, plis, input[pinput]);
+			lis[pos - 1] = input[pinput];
+			vt[pinput].first = pos - 1;
+			vt[pinput].second = input[pinput];
+		}
+		pinput++;
+	}
+
+	cout << plis + 1 << "\n";
+
+	stack<int> s;
+	int t = plis;
+
+	for (int i = n - 1; i >= 0; i--) {
+		if (vt[i].first == t) {
+			s.push(vt[i].second);
+			t--;
+		}
+	}
+
+	while (!s.empty()) {
+		cout << s.top() << " ";
+		s.pop();
+	}
+	cout << "\n";
+	return 0;
+}
 
 ```
 
