@@ -76,6 +76,9 @@
 
 
 
+<div id="DBMS의기능"></div>
+
+
 ## DBMS의 기능
 
 ### DBMS의 정의 (★★★★)
