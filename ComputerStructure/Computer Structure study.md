@@ -165,7 +165,7 @@ int main()
 ```
 
 
-<div id="프로세서"></div>
+<div id="중앙처리장치"></div>
 
 ## 중앙처리장치
 
@@ -221,7 +221,7 @@ int main()
 
 
 
-<div id=""></div>
+<div id="명령어"></div>
 
 
 ## 명령어
@@ -278,6 +278,8 @@ int main()
 ![명령어형식](./images/명령어형식4.PNG)
 
 
+
+<div id=""></div>
 
 ## 인터럽트
 
